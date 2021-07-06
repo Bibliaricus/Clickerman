@@ -1,0 +1,78 @@
+ /* Amulets - Grom */
+ a[href$="amuletType=4"]:not(.minor) {
+  color: blue;
+  background-color: blue;  
+}
+
+/* Amulets - Listok of Lotos */
+a[href$="amuletType=1"] {
+  color: lightgreen;
+  background-color: lightgreen;
+}
+
+/* Amulets - Demon, Deffense of Gods, Strange of Mage */
+a[href$="amuletType=7"]:not(.minor),
+a[href$="amuletType=3"]:not(.minor),
+a[href$="amuletType=2"]:not(.minor) {
+  color: brown;
+  background-color: brown; 
+}
+
+/* Amulets - Blood flower, Rage of Gods, Burn of Ether */
+a[href$="amuletType=8"]:not(.minor),
+a[href$="amuletType=5"]:not(.minor),
+a[href$="amuletType=6"]:not(.minor) {
+  color: gold;
+  background-color: gold;  
+}
+
+/* Amulets - Talisman, Spheres of Arkana */
+a[href$="amuletType=9"]:not(.minor),
+a[href$="amuletType=13"]:not(.minor) {
+  color: bisque;
+  background-color: bisque;  
+}
+
+/* Amulets - Curse of Glaive, Spurt of Life, Shadow of Death */
+a[href$="amuletType=12"]:not(.minor),
+a[href$="amuletType=11"]:not(.minor),
+a[href$="amuletType=10"]:not(.minor) {
+  color: blueviolet;
+  background-color: blueviolet;  
+}
+
+
+/* Potions */
+a[href*="combat"][href*="potion"]:not(.minor) {
+  color: green;
+  background-color: green;
+}
+
+/* Last enemy */
+#enemyList>span:only-of-type>span:only-of-type a:only-child{
+  color: aqua;
+  background-color: aqua;
+}
+
+/* Entering to Hell-games (and mayge other links) */
+a[href$="basin/combat"] {
+  color: gold;
+  background-color: gold;
+}
+
+/* Checking death of keeper */
+img[src$="keeper.png"] + span.info {
+  color: cadetblue;
+  background-color: cadetblue;
+} 
+
+/* Checking HP in new combat */
+/* img[src*="heart_33"] + span.info {
+  background-color: darksalmon;
+  color: darksalmon;
+}
+
+img[src*="heart_0"] + span.info {
+  background-color: darkred;
+  color: darkred;
+} */

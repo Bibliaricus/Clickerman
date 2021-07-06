@@ -1,0 +1,7 @@
+﻿// __Service scenario__
+WAITMS(RND(1000,1200)
+KEYDOWN (#CTRL)
+WAITMS (50)
+KEYPRESS (#V)
+KEYUP (#CTRL)
+WAIT(RND(1,2))

@@ -1,0 +1,104 @@
+Сведения о приложении
+---------------------
+
+Имя: K-Meleon
+Версия: 76.0
+ID сборки: 7600
+User Agent: Mozilla/5.0 (Windows NT 6.1; rv:52.9) Gecko/20100101 Goanna/3.4 Firefox/52.9 K-Meleon/76.0
+ОС: Windows_NT 6.1
+Многопроцессные окна: 0/2 (по умолчанию: false)
+Безопасный режим: false
+
+Расширения
+----------
+
+Имя: NewsFox
+Версия: 1.0.9.1
+Включено: true
+ID: {899DF1F8-2F43-4394-8315-37F6744E6319}
+
+Графика
+-------
+
+Аппаратно ускоренные окна: 0/2 Basic (OMTC)
+Версия драйвера: 9.18.13.908
+Визуализатор WebGL: Google Inc. -- ANGLE (NVIDIA GeForce 7025 / NVIDIA nForce 630a Direct3D9Ex vs_3_0 ps_3_0)
+Дата разработки драйвера: 1-30-2015
+Драйвера видеокарты: nvd3dum
+Код подсистемы: 03d61849
+Код производителя: 0x10de
+Код устройства: 0x03d6
+Объём видеопамяти: 256
+Описание видеокарты: NVIDIA GeForce 7025 / NVIDIA nForce 630a
+DirectWrite включён: false (6.2.9200.22902)
+GPU #2 активен: false
+windowLayerManagerRemote: true
+AzureCanvasBackend: skia
+AzureContentBackend: cairo
+AzureFallbackCanvasBackend: cairo
+AzureSkiaAccelerated: 0
+
+Важные изменённые настройки
+---------------------------
+
+browser.startup.homepage: https://www.google.com/
+extensions.lastAppVersion: 76.0
+general.useragent.contentlocale:
+general.useragent.locale: ru
+image.http.accept: image/webp,image/jxr,image/png,image/*;q=0.8,*/*;q=0.5
+layers.acceleration.disabled: true
+network.cookie.cookieBehavior: 0
+network.cookie.prefsMigrated: true
+places.database.lastMaintenance: 1623928655
+places.history.expiration.transient_current_max_pages: 46958
+plugin.importedState: true
+storage.vacuum.last.index: 1
+storage.vacuum.last.places.sqlite: 1623928655
+
+Настройки user.js
+-----------------
+
+В папке вашего профиля находится файл user.js, в котором содержатся настройки, созданные пользователем, а не K-Meleon.
+
+Важные заблокированные настройки
+--------------------------------
+
+База данных Places
+------------------
+
+JavaScript
+----------
+
+Инкрементальный GC: true
+
+Поддержка доступности
+---------------------
+
+Активирована: false
+Отключение поддержки доступности: 0
+
+Версии библиотек
+----------------
+
+NSPR
+Ожидаемая минимальная версия: 4.19
+Используемая версия: 4.19
+
+NSS
+Ожидаемая минимальная версия: 3.36.4
+Используемая версия: 3.36.4
+
+NSSSMIME
+Ожидаемая минимальная версия: 3.36.4
+Используемая версия: 3.36.4
+
+NSSSSL
+Ожидаемая минимальная версия: 3.36.4
+Используемая версия: 3.36.4
+
+NSSUTIL
+Ожидаемая минимальная версия: 3.36.4
+Используемая версия: 3.36.4
+
+Экспериментальные возможности
+-----------------------------

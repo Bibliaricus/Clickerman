@@ -1,0 +1,12 @@
+﻿IF_PIXEL_IN(0,0, 907,381, 9498256)
+IF_PICTURE_IN (0,0, 907,381, "listok_lotosa-min.bmp", -1, 100)
+
+LOGWRITE("PERMANENT ITERATION - START")
+
+// Permanent healing
+
+DEFINE($permanent_healing, 1)
+DEFINE($healing_conter, 1)
+
+WHILE($permanent_healing = 1)
+LOGWRITE("Permanent healing cycle start")

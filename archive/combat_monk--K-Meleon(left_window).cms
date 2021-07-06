@@ -1,0 +1,193 @@
+﻿ // Styles for User CSS (Chrome)
+ 
+// a[href$="amuletType=7"]:not(.minor) {
+//  color: red;
+//  background-color: red;
+//}
+
+//a[href*="combat"][href*="potion"]:not(.minor) {
+//  color: green;
+//  background-color: green;
+//}
+
+//#enemyList>span:only-of-type>span:only-of-type a:only-child{
+//  color: aqua;
+//  background-color: aqua;
+//}
+
+// End CSS
+
+// combat_monk--K-Meleon(left).cms буде працювати для вікон, що припасовані до лівої сторони екрану
+
+// Працездатність сценарію:
+// Single
+
+// Home-PC^Chrome; помилок не виявлено ні на яких етапах. Сценарій працює, як і очікувалось
+
+// Home-PC^K-Meleon: помилок не виявлено ні на яких етапах. Сценарій працює, як і очікувалось
+
+// Виявлені баги:       
+       
+
+// Добавити прибори (але вже на високих левелах)
+// Можна зробити універсальний для всіх комбат (додати перевірку зображення (або кольору, як в демона) амулету, і в залежності від знайденої картинки записувати в змінну якесь значення, а потім то значення передавати в умову switch 
+                              
+LOGWRITE("COMBAT ITERATION - START")
+
+DEFINE($combat_detect, 1)
+
+WHILE($combat_detect = 1)
+   LOGWRITE("Combat cycle start")
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 625,351, "atack_kick.bmp", -1, 100)
+      LOGWRITE("Combat begin")
+			
+// Body of combat cycle 
+
+// Checking HP    
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 625,313, "new-half_hp--min.bmp", -1, 95)
+LOGWRITE ("Half-hp!")        
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 625,381, "listok_lotosa-min.bmp", -1, 100) 
+      LOGWRITE("Heal!")    	 	   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAITMS(RND(500,800))
+   ELSE
+      LOGWRITE("listok_lotosa-min.bmp not found")
+	 END_IF   
+ELSE
+   LOGWRITE("new-half_hp--min.bmp not fond")
+END_IF
+
+DEFINE($low_hp_state, 1)
+
+WHILE($low_hp_state = 1)
+  LOGWRITE("Cycle-low start!")         
+  GETSCREEN
+   IF_PICTURE_IN (0,0, 625,313, "new-low_hp--min.bmp", -1, 95)
+   LOGWRITE ("Low-hp!")   
+      GETSCREEN
+      IF_PICTURE_IN (0,0, 625,381, "listok_lotosa-min.bmp", -1, 100)
+         LOGWRITE("Heal!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+         WAITMS(RND(2100,2200))
+      ELSE
+         LOGWRITE("listok_lotosa-min.bmp not found")
+      END_IF
+   ELSE
+   LOGWRITE("new-low_hp--min.bmp not fond")
+   INC($low_hp_state,1)   
+   END_IF 
+END_CYC
+UNDEFINE($low_hp_state)
+
+LOGWRITE("Cycle-low end")
+
+DEFINE($empty_hp_state, 1)
+
+WHILE($empty_hp_state = 1)
+  LOGWRITE("Cycle-empty start!")         
+  GETSCREEN
+   IF_PICTURE_IN (0,0, 625,313, "new-empty_hp--min.bmp", -1, 95)
+   LOGWRITE ("Empty-hp!")
+   	 WAITMS(RND(20,60))
+      GETSCREEN
+      IF_PICTURE_IN (0,0, 625,312, "potion_green.bmp", -1, 100)
+         LOGWRITE("Potion!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+				 WAITMS(RND(2100,2200))      
+      ELSE
+         LOGWRITE("potion_green.bmp not found")
+         GETSCREEN
+         IF_PICTURE_IN (0,0, 625,381, "listok_lotosa-min.bmp", -1, 100)
+         LOGWRITE("Heal!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+         WAITMS(RND(2200,2400))
+         ELSE
+         LOGWRITE("listok_lotosa-min.bmp not found")
+         INC($empty_hp_state,1)
+      END_IF
+      END_IF        
+   ELSE
+      LOGWRITE("empty-half_hp--min.bmp not fond")
+      INC($empty_hp_state,1)
+   END_IF
+END_CYC
+UNDEFINE($empty_hp_state)     
+
+LOGWRITE("Cycle-empty end")
+
+// Healing in last enemy
+
+GETSCREEN  
+   IF_PICTURE_IN (0,0, 625,332, "last_enemy.bmp", -1, 100)
+   LOGWRITE ("Last enemy!")
+   
+   
+      DEFINE($full_hp_healing, 1)
+      
+      WHILE($full_hp_healing = 1)
+        LOGWRITE("Cycle last_enemy_healing start!")         
+        GETSCREEN
+         IF_PICTURE_IN (0,0, 625,313, "full_hp.bmp", -1, 95)
+            LOGWRITE ("Full-hp!")   
+            INC($full_hp_healing,1)            
+         ELSE
+            LOGWRITE("Not full hp!")
+            
+            GETSCREEN
+            IF_PICTURE_IN (0,0, 625,381, "listok_lotosa-min.bmp", -1, 100)
+               LOGWRITE("Heal!")   
+               LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+               WAITMS(RND(2100,2200))
+            ELSE
+               LOGWRITE("listok_lotosa-min.bmp not found")
+            END_IF
+ 
+         END_IF 
+      END_CYC
+      UNDEFINE($full_hp_healing)
+      LOGWRITE("Cycle last_enemy_healing end")
+   
+   ELSE
+   LOGWRITE("last_enemy.bmp not fond")
+END_IF
+
+// Amulet - Demon
+	 WAIT(1)
+   GETSCREEN  
+   IF_PICTURE_IN (0,0, 625,339, "demon_red.bmp", -1, 100)
+   LOGWRITE ("Стал демоном! RED!")         
+      LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+      WAITMS(RND(1000,1800))
+   ELSE
+   LOGWRITE("demon_red.bmp not found")   
+   END_IF      
+
+// Attack
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 625,351, "atack_kick.bmp", -1, 100)     
+      LOGWRITE ("Attack!")
+      LCLICK($_return1+RND(10,80), $_return2+RND(1,3))  
+      WAITMS(RND(1000,1500))
+   ELSE
+	    LOGWRITE("atack_kick.bmp not found")   
+   END_IF 
+   
+// End body of combat cycle
+
+   ELSE
+   LOGWRITE("Combat end (not found attack.bmp)")
+   INC($combat_detect,1)
+	    
+   END_IF                  	   
+
+END_CYC
+
+UNDEFINE($combat_detect)
+
+LOGWRITE("COMBAT ITERATION - END")

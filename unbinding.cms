@@ -1,0 +1,6 @@
+﻿// __Service scenario___
+
+HSET(HGET(367,25),0)
+HSET(HGET(1015,25),0)
+
+HALT

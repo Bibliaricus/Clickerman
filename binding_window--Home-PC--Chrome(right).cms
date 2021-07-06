@@ -1,0 +1,8 @@
+﻿// __Service scenario___
+
+LOGWRITE("Right binding")
+LOGWRITE("1. Current bind hWND is: ", $_hwnd) 
+$h = HGET(990,21)
+LOGWRITE("hWND of right window (HGET) is: ", $h)
+HSET($h,1)
+LOGWRITE("2. Current bind hWND is: ", $_hwnd)

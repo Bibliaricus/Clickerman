@@ -1,0 +1,96 @@
+﻿// Created by Slavik
+// For: Home-PC
+// Browser: K-Meleon, Chrome
+
+//=============================================
+
+// Працездатність сценарію:
+// Single
+
+// Work-PC^Chrome: така сама проблема як і в коматі. Не клікає на правому половинному вікні. Це через те, що недостатньо велика область пошуку. Але, думаю, що її більшою і не потрібно робити.
+
+// Work-PC^K-Meleon: дивно, але там проблема із правим половинним вікном Хрому не зустрічається або мені не вдалось її побачити.
+
+// Bugs: не завжди коректно працює розпізнавання картинок. Покищо невідомо чому. UPD: з'ясувалось, що проблема була в області пошуку.
+
+// Виявлені баги:
+// В кінці сценарію при переході на головну і поверненні назад в Ігри інколи не спрацьовує копіювання тексту в адресну стрічку. І чомусь не заходить в Пекельні ігри.
+
+//=============================================
+  // Мінералів до початку фарму: 766
+  // Мінералів після закінчення фарму: 
+  // Загалом нафармлено за сеанс: 
+
+// Протестити повністю весь сценарій
+// Розставити нормальні вейти на всіх етапах
+
+LOGWRITE("HELL GAME ITERATION - START")
+DEFINE($iteration_counter, 1)
+// $iteration_counter - 3 (*_counter <=3), test - 3
+// $transition_counter - 30, test - 5
+WHILE($iteration_counter <= 4)
+   LOGWRITE("Hell games cycle start")           
+   
+   // Start battle
+   
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 866,570, "hell-game_img.bmp", -1, 100)
+      LOGWRITE ("HELL GAME!!!")
+      GETSCREEN
+      IF_PIXEL_IN(0,0, 864,762, 55295)         
+         LOGWRITE ("START!!!")
+         LCLICK($_return1+RND(20,50), $_return2+RND(1,3))
+         WAITMS(RND(500,1500))
+      ELSE
+         LOGWRITE("start_battle--hell-game.bmp not found")
+      END_IF
+   ELSE
+      LOGWRITE("hell-game_img.bmp not found")
+   END_IF
+   
+   // Combat cycle
+   #include "combat_universal--hell_games.cms"
+   
+   // Return to main page and Waiting after succesful hell game (after some transition) (test - 30 seconds, production - 1.5-2 hours
+   // Return to main page
+   LOGWRITE("Returning to main page after succesfull games!")
+   TOCLIP("https://m.vten.ru/")
+   #include "zz_ctrl+l.cms"
+   #include "zz_ctrl+v.cms"
+   KEYPRESS(#ENTER)
+   
+   // Waiting after succesfull hell games
+   LOGWRITE("Start waiting in main page")
+   // WAIT(10)
+   WAIT(RND(600,900))   
+   // WAIT(RND(2400,3300))
+   
+   LOGWRITE("End waiting in main page")
+   
+   // Return to hell games after waiting
+   LOGWRITE("Return to Hell games after waiting after succesfull game!")
+   TOCLIP("https://m.vten.ru/basin")
+   #include "zz_ctrl+l.cms"
+   LOGWRITE ("3. In clipboard now: ", FROMCLIP())
+   WAIT(1)
+   #include "zz_ctrl+v.cms"
+   LOGWRITE ("3. Copying happened!")
+   KEYPRESS(#ENTER)
+   WAIT(3)
+   
+   // Checking iteration_counter
+   INC($iteration_counter)
+   LOGWRITE("Iteration counter now is: ", $iteration_counter)
+   
+   
+   LOGWRITE("Hell games cycle end")
+END_CYC
+UNDEFINE($iteration_counter)
+LOGWRITE("HELL GAME ITERATION - END")
+
+// Waiting between hell-game iteration (test - 10-15 second, production - 1-2 or 6-8 hours) (by RND)
+LOGWRITE("Waiting between hell-game iteration - start")
+// WAIT(RND(10,15))
+WAIT(RND(21600,28800))
+
+LOGWRITE("Waiting between hell-game iteration - end")

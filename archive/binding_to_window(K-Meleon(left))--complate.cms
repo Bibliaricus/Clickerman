@@ -1,0 +1,8 @@
+﻿// На Home-PC для Chrome достатньо просто прив'язатись до зовнішнього вікна Хрому і запустити permanent_healing
+// На Home-PC для K-Meleon пока невідомо, як зробити прив'язку
+
+// Binding to window K-Meleon (left)
+$hWND_window_meleon = WNDFIND("K-Meleon")
+HSET($hWND_window_meleon,1)
+$new_work_window = HGET(337,192)
+HSET($new_work_window,1)

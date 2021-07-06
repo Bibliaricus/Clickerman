@@ -1,0 +1,64 @@
+﻿LOGWRITE("PERMANENT ITERATION - START")
+
+// Permanent healing
+
+DEFINE($permanent_healing, 1)
+DEFINE($healing_conter, 1)
+
+WHILE($permanent_healing = 1)
+LOGWRITE("Permanent healing cycle start")
+   // Binding to current work window (K-Meleon (left))
+   #include "binding_to_window(K-Meleon(left))--complate.cms"
+            
+   // Using potion      
+   GETSCREEN
+      IF_PICTURE_IN (0,0, 902,313, "new-empty_hp--min.bmp", -1, 95)
+      LOGWRITE ("Empty-hp!")
+      	 WAITMS(RND(80,120))
+         GETSCREEN
+         IF_PICTURE_IN (0,0, 915,312, "potion_green.bmp", -1, 100)
+            LOGWRITE("Potion!")   
+            LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+   				 WAITMS(RND(2100,2200))      
+         ELSE
+            LOGWRITE("potion_green.bmp not found")
+            GETSCREEN
+            IF_PICTURE_IN (0,0, 907,381, "listok_lotosa-min.bmp", -1, 100)
+               LOGWRITE("Heal!")   
+               LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+               WAITMS(RND(2100,2200))
+            ELSE
+               LOGWRITE("listok_lotosa-min.bmp not found")
+            END_IF
+         END_IF        
+      ELSE
+         LOGWRITE("empty-half_hp--min.bmp not fond")
+         INC($empty_hp_state,1)
+      END_IF
+	 // Body of permanent healing cycle
+   GETSCREEN   
+   IF_PICTURE_IN (0,0, 907,381, "listok_lotosa-min.bmp", -1, 100)
+      LOGWRITE("Heal!")   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAITMS(RND(2100,2200))
+   ELSE
+      LOGWRITE("listok_lotosa-min.bmp not found")
+      INC($healing_conter,1)
+			LOGWRITE("$healing_conter is: ", $healing_conter)
+      // LCLICK(86,55) 
+      KEYPRESS(#F5)
+			                      
+      LOGWRITE("Refresh!")
+      WAIT(4)
+   END_IF
+   IF($healing_conter > 50)
+      INC($permanent_healing,1)                            
+   END_IF
+END_CYC
+LOGWRITE("Permanent healing cycle end")
+
+UNDEFINE($permanent_healing)
+UNDEFINE($healing_conter)  
+
+LOGWRITE("PERMANENT ITERATION - END")
+HALT

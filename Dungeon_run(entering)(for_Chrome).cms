@@ -1,0 +1,188 @@
+﻿// 13.06.2021
+#name "Dungeon"
+//=============================================
+// List of Dungeon
+// 1. Святилище Накрила
+// https://m.vten.ru/dungeon/description/dSanctuary
+
+// 2. Адские развалины - брут) 
+// https://m.vten.ru/dungeon/landing/dHellRuins/impossible
+//=============================================
+
+//==================  MIR TENEY  ==============
+// 0. Change keyboard layout to ENG (for correct writting URL)
+KEYDOWN (#CTRL)
+WAITMS (50)
+KEYDOWN (#SHIFT)
+WAITMS (50)
+KEYPRESS(#1)
+KEYUP (#SHIFT)
+KEYUP (#CTRL)   
+// End chosing keyboard layout
+
+// Так і не розібрався чому іноді замість URL виводяться розділові знаки
+
+//1. Chosing the Danguon
+LCLICK(602,58)  // 2367776
+WAIT(1)            
+KEYSTRING("https://m.vten.ru/dungeon/description/dSanctuary")     
+WAIT(1)
+KEYPRESS(#ENTER)
+WAIT(3)
+//End chosing the Danguon
+//1.1. Enterning to Danguon
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "enter-min.bmp", -1, 100)
+   LCLICK($_return1+RND(30,60), $_return2+RND(3,8))
+   WAIT(3)
+END_IF
+//1.2. Start battle
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "start_battle.bmp", -1, 100)
+   LCLICK($_return1+RND(10,50), $_return2+RND(1,5))
+   WAIT(2)
+END_IF
+//End pre-battle step
+
+//2. Battle
+//2.1. Checking HP and healing
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "half_hp--min.bmp", -1, 100)
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100) 	   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,5))
+   END_IF   
+
+END_IF
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "low_hp--min.bmp", -1, 100)
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100)
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,5))
+   END_IF   
+
+END_IF
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "empty_hp--min.bmp", -1, 100)
+
+   GETSCREEN              
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100)   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,5))
+   END_IF   
+
+END_IF
+//2.2. Atacking (permanent)
+   //THREAD(Atack_grom)
+   //WAIT(2)
+   //GETSCREEN
+   //IF_PICTURE_IN (0,0, $_xmax,$_ymax, "atack_grom.bmp", -1, 100)
+   //   LCLICk($_return1+RND(10,30), $_return2+RND(1,5))
+   //   WAIT(30)  
+   //END_IF
+   //END_THREAD
+THREAD(Atack_demon)
+WAIT(2)
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "atack_demon.bmp", -1, 100)
+   LCLICk($_return1+RND(10,30), $_return2+RND(1,5))
+   WAIT(60)  
+END_IF
+END_THREAD
+
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "atack_kick.bmp", -1, 100)
+   WAIT(2)   
+   LCLICK($_return1+RND(10,30), $_return2+RND(1,5))
+   WAIT(3)  
+END_IF
+//2.3. Healing (permanent)
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100)
+   LCLICk($_return1+RND(10,30), $_return2+RND(1,5))
+   WAIT(4)  
+END_IF
+//2.4. Inteligent battle
+// Start pause
+WAIT(1)
+// End pause
+
+// Checking HP
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "half_hp--min.bmp", -1, 100)
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100) 	   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAIT(1)
+   END_IF   
+
+END_IF
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "low_hp--min.bmp", -1, 100)
+
+   GETSCREEN
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100)
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAIT(1)
+   END_IF   
+
+END_IF
+
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "empty_hp--min.bmp", -1, 100)
+
+   GETSCREEN              
+   IF_PICTURE_IN (0,0, $_xmax,$_ymax, "listok_lotosa-min.bmp", -1, 100)   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAIT(1)
+   END_IF   
+
+END_IF
+
+//=============================================
+
+// Demon - v.3
+
+GETSCREEN  
+IF_PICTURE_IN (0,0, 915,339, "demon_full-passive(start).bmp", -1, 100)         
+   LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+   WAIT(1)
+END_IF
+
+// End - v.3
+
+//=============================================
+                                               
+   //THREAD(Atack_grom)
+   //WAIT(2)
+   //GETSCREEN
+   //IF_PICTURE_IN (0,0, $_xmax,$_ymax, "atack_grom.bmp", -1, 100)
+   //   LCLICk($_return1+RND(10,30), $_return2+RND(1,5))
+   //   WAIT(30)  
+   //END_IF
+   //END_THREAD
+
+// Attack
+
+GETSCREEN
+IF_PICTURE_IN (0,0, $_xmax,$_ymax, "atack_kick.bmp", -1, 100)      
+   LCLICK($_return1+RND(10,80), $_return2+RND(1,3))  
+   WAIT(1)
+END_IF
+//2.5. Check finish battle
+
+HALT
+
+// ------------------------   Other dang ------------
+LCLICK(602,58)  // 2367776
+WAIT(1)                                    
+KEYSTRING("https://m.vten.ru/dungeon/landing/dHellRuins/impossible")     
+WAIT(1)
+KEYPRESS(#ENTER)
+WAIT(8)

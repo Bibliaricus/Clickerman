@@ -1,0 +1,17 @@
+﻿// __Service scenario___
+
+// На Home-PC для Chrome достатньо просто прив'язатись до зовнішнього вікна Хрому і запустити permanent_healing
+// На Home-PC для K-Meleon пока невідомо, як зробити прив'язку
+
+// Binding to window K-Meleon (left)
+   LOGWRITE("Left binding")
+   $hWND_window_meleon = WNDFIND("K-Meleon")
+   LOGWRITE("$hWND_window_meleon is :", $hWND_window_meleon)
+   LoGWRITE("1. Binding hWND is: ", $_hwnd)
+   HSET($hWND_window_meleon,1)
+   LoGWRITE("2. Binding hWND is: ", $_hwnd)
+   $new_work_window = HGET(337,192) // error is here
+   LOGWRITE("$new_work_window is :", $new_work_window)
+   LoGWRITE("3. Binding hWND is: ", $_hwnd)
+   HSET($new_work_window,1)  
+	 LoGWRITE("4. Binding hWND is: ", $_hwnd)
