@@ -1,0 +1,385 @@
+﻿// __Modified Scenario__
+
+// Реалізувати зупинку сценарію на тривалий срок 8-10 годин, після того, як буде або кілька успішних прокатів або неуспішних. Можливо, зробити це через логічну операцію в умові (додати перевірку ще однієї змінної, яку інкрементувати після 3 смертей. Можливо, зробити це за допомогою SWITCH.
+
+LOGWRITE("COMBAT ITERATION - START")
+
+// Binding to Chrome window (right)
+#include "binding_window--Home-PC--Chrome(right).cms"  
+
+// Combat cycle
+DEFINE($combat_detect, 1)
+WHILE($combat_detect = 1)
+
+  // Checking of keeper cycle
+  DEFINE($transition_counter, 1)
+  WHILE($transition_counter <= 55)   // Можливо якийсь інший вираз впихнути  
+  
+  // Death checking
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 907,420, "death.bmp", -1, 90)
+      LOGWRITE ("It is a death! TRUE DEATH!!!")
+      // Death counter
+      INC($death_count,1)
+      LOGWRITE ("Deaths: ", $death_count)
+      IF($death_count >= 3)      // Відправляти його в інше місце через GOTO
+         LOGWRITE ("Stop, STOP IT!!! ENOUGHT, IT'S VERY PAINLY!!!")
+         // Going to main page and wait or stoped script
+         TOCLIP("https://m.vten.ru/")
+         #include "zz_ctrl+l.cms"
+
+         // Paste URL to adress bar
+         #include "zz_ctrl+v.cms"
+
+         // Press ENTER
+         KEYPRESS(#ENTER)
+         // Waiting or stoped
+         // Test waiting - 30 seconds,  defoult - RND(50 minutes, 70 minutes)
+         // HALT
+         
+         // Waiting after death (30 seconds in test, 50-70 minutes in production)
+         LOGWRITE("Waiting in main page after 3 death in hell games and undefine $death_count")
+         UNDEFINE($death_count)                                                    
+         // WAIT(30)
+         WAIT(RND(3300,4500))
+         
+         
+         // Returning to Hell games
+         LOGWRITE("Return to Hell games!")
+         TOCLIP("https://m.vten.ru/basin")
+         #include "zz_ctrl+l.cms"
+         LOGWRITE ("2. In clipboard now: ", FROMCLIP())
+         WAIT(1)
+         #include "zz_ctrl+v.cms"
+         LOGWRITE ("2. Copying happened!")
+         KEYPRESS(#ENTER)
+         // Entering to hell game
+         WAIT(RND(2,4))         
+         GETSCREEN
+            IF_PICTURE_IN (0,0, $_xmax,$_ymax, "hell-game_img.bmp", -1, 90)
+               LOGWRITE ("HELL GAME!!!")
+               GETSCREEN
+               IF_PIXEL_IN(0,0, 864,762, 55295)         
+                  LOGWRITE ("START!!!")
+                  LCLICK($_return1+RND(20,50), $_return2+RND(1,3))
+                  WAITMS(RND(500,1500))
+               ELSE
+                  LOGWRITE("start_battle--hell-game.bmp not found")
+               END_IF
+            ELSE
+               LOGWRITE("hell-game_img.bmp not found")
+            END_IF
+      ELSE
+         
+         WAIT(RND(1,2))
+         
+         // Unknow procedure
+         LCLICK($_return1+RND(30,60), $_return2+RND(20,23))
+         LOGWRITE("Leave hell games after death")
+         WAIT(1)
+         // From graveyard to Hell game
+         // Copy URL to clipboard
+         TOCLIP("https://m.vten.ru/basin")
+         #include "zz_ctrl+l.cms"         
+         LOGWRITE ("1. In clipboard now: ", FROMCLIP())
+         WAIT(1)
+         // Paste URL to adress bar
+         #include "zz_ctrl+v.cms"
+         LOGWRITE ("1. Copying happened!")
+         // Press ENTER
+         KEYPRESS(#ENTER)
+         // Entering to hell game
+         LOGWRITE("Waiting before checking hell-game_img.bmp in road from graveyard")
+				 WAIT(RND(2,4))         
+         GETSCREEN
+            IF_PICTURE_IN (0,0, $_xmax,$_ymax, "hell-game_img.bmp", -1, 90)
+               LOGWRITE ("HELL GAME!!!")
+               GETSCREEN
+               IF_PIXEL_IN(0,0, 864,762, 55295)         
+                  LOGWRITE ("START!!!")
+                  LCLICK($_return1+RND(20,50), $_return2+RND(1,3))
+                  WAITMS(RND(500,1500))
+               ELSE
+                  LOGWRITE("start_battle--hell-game.bmp not found")
+               END_IF
+            ELSE
+               LOGWRITE("hell-game_img.bmp not found")
+            END_IF
+      END_IF
+   ELSE
+      LOGWRITE ("death.bmp not found")
+   END_IF
+  
+  LOGWRITE(" Keeper cycle start")
+
+   // Check the keeper  
+   GETSCREEN  
+     IF_PIXEL_IN(0,0, 862,289, 10526303)
+      LOGWRITE ("Хранитель убит!")
+      
+      // Change the source 
+      WAIT(1)
+      GETSCREEN
+      IF_PICTURE_IN (0,0, $_xmax,$_ymax, "source.bmp", -1, 100)
+      
+         // Check transition counter  (якщо буде багуватись чи некоректно працювати, то помістити в інше місце)
+         LOGWRITE("Достаточно ли фармить?")
+         IF($transition_counter <= 55)
+           LOGWRITE("Недостаточно!")
+           GOTO(cont)         
+         ELSE
+           LOGWRITE("Хватит фармить!")
+           INC($transition_counter)
+					 GOTO(ext)
+					    
+         END_IF                            
+         cont:
+         LOGWRITE ("Переходим на новый источник!")
+         INC($transition_counter)
+         LOGWRITE("Переходов по источниках сделано: ", $transition_counter)
+         LCLICK($_return1+RND(30, 50), $_return2+RND(1,3))
+         WAITMS(RND(500,1300))
+      ELSE
+   	   LOGWRITE("Refresh!")            
+        KEYPRESS(#F5)                      
+        WAIT(4)    
+      END_IF
+   ELSE
+	    LOGWRITE("Хранитель жив!")   
+   END_IF                                  
+   LOGWRITE("Combat cycle start")
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)
+      LOGWRITE("Combat begin")
+			
+// Body of combat cycle
+
+// Checking class of personage (при оптимізації зробити так, щоб лише один раз за весь комбат цикл перевіряло чи це монк чи ні, записувало це в змінну, і вже потім кожну ітерацію повторювало, знаючи, що це монк і не проводячи перевірку на нього)
+   GETSCREEN
+   IF_PIXEL_IN(0,0, 1300,381, 9498256)
+      LOGWRITE("Class check. It is a monk!")
+      GOTO(checkingHP)
+	 ELSE
+      LOGWRITE("Class check. It's not a monk!")	 
+      IF_PICTURE_IN (0,0, 902,313, "new-low_hp--min.bmp", -1, 95)
+         LOGWRITE ("Low-hp!")
+         GETSCREEN         
+         IF_PIXEL_IN(0,0, 902,500, 32768)
+            WAITMS(RND(20,60))
+            LOGWRITE("Potion!")   
+            LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+   				  WAITMS(RND(2100,2200))
+				 ELSE
+				    LOGWRITE("potion_green.bmp not found")      
+         END_IF
+      ELSE
+         LOGWRITE("new-low_hp--min.bmp not fond")            
+      END_IF
+      IF_PICTURE_IN (0,0, 902,313, "new-empty_hp--min.bmp", -1, 95)
+         LOGWRITE ("Empty-hp!")
+         WAITMS(RND(20,60))
+         GETSCREEN				             
+         IF_PIXEL_IN(0,0, 902,500, 32768)
+            LOGWRITE("Potion!")   
+            LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      	 	  WAITMS(RND(2100,2200))
+				 ELSE
+				    LOGWRITE("Potion is not found")       	 	  
+ 				 END_IF
+	    ELSE
+   	    LOGWRITE("empty-half_hp--min.bmp not fond")
+	    END_IF
+	    LOGWRITE("No Monk. Full HP")	    
+	 END_IF 
+   GOTO(amulets)
+   
+// Checking HP
+checkingHP:   
+ 
+// Half HP
+GETSCREEN
+IF_PICTURE_IN (0,0, 902,313, "new-half_hp--min.bmp", -1, 95)
+LOGWRITE ("Half-hp!")    
+   GETSCREEN
+   IF_PIXEL_IN(0,0, 1300,381, 9498256) 
+      LOGWRITE("Heal!")    	 	   
+      LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+      WAITMS(RND(500,800))
+   ELSE
+      LOGWRITE("listok_lotosa-min.bmp not found")
+	 END_IF   
+ELSE
+   LOGWRITE("new-half_hp--min.bmp not fond")
+END_IF
+
+// Low HP
+DEFINE($low_hp_state, 1)
+
+WHILE($low_hp_state = 1)
+  LOGWRITE("Cycle-low start!")         
+  GETSCREEN
+   IF_PICTURE_IN (0,0, 902,313, "new-low_hp--min.bmp", -1, 95)
+   LOGWRITE ("Low-hp!")   
+      GETSCREEN
+      IF_PIXEL_IN(0,0, 1300,381, 9498256)
+         LOGWRITE("Heal!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+         WAITMS(RND(2100,2200))
+      ELSE
+         LOGWRITE("listok_lotosa-min.bmp not found")
+      END_IF
+   ELSE
+   LOGWRITE("new-low_hp--min.bmp not fond")
+   INC($low_hp_state,1)   
+   END_IF 
+END_CYC
+UNDEFINE($low_hp_state)
+
+LOGWRITE("Cycle-low end")
+
+// Empty HP
+DEFINE($empty_hp_state, 1)
+
+WHILE($empty_hp_state = 1)
+  LOGWRITE("Cycle-empty start!")         
+  GETSCREEN
+   IF_PICTURE_IN (0,0, 902,313, "new-empty_hp--min.bmp", -1, 95)
+   LOGWRITE ("Empty-hp!")
+   	 WAITMS(RND(20,60))
+      GETSCREEN
+      IF_PIXEL_IN(0,0, 902,513, 32768)
+         LOGWRITE("Potion!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+				 WAITMS(RND(2100,2200))      
+      ELSE
+         LOGWRITE("potion_green.bmp not found")
+         GETSCREEN
+         IF_PIXEL_IN(0,0, 1300,381, 9498256)
+         LOGWRITE("Heal!")   
+         LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+         WAITMS(RND(2200,2400))
+         ELSE
+         LOGWRITE("listok_lotosa-min.bmp not found")
+         INC($empty_hp_state,1)
+      END_IF
+      END_IF        
+   ELSE
+      LOGWRITE("empty-half_hp--min.bmp not fond")
+      INC($empty_hp_state,1)
+   END_IF
+END_CYC
+UNDEFINE($empty_hp_state)     
+
+LOGWRITE("Cycle-empty end")
+
+// Healing in last enemy
+GETSCREEN  
+   IF_PICTURE_IN (0,0, 912,332, "last_enemy.bmp", -1, 100)
+   LOGWRITE ("Last enemy!")    
+      DEFINE($full_hp_healing, 1)
+      
+      WHILE($full_hp_healing = 1)
+        LOGWRITE("Cycle last_enemy_healing start!")         
+        GETSCREEN
+         IF_PICTURE_IN (0,0, 902,313, "full_hp.bmp", -1, 95)
+            LOGWRITE ("Full-hp!")   
+            INC($full_hp_healing,1)            
+         ELSE
+            LOGWRITE("Not full hp!")
+            
+            GETSCREEN
+            IF_PIXEL_IN(0,0, 1300,381, 9498256)
+               LOGWRITE("Heal!")   
+               LCLICK($_return1+RND(10,30), $_return2+RND(1,3))
+               WAITMS(RND(2100,2200))
+            ELSE
+               LOGWRITE("listok_lotosa-min.bmp not found")
+            END_IF
+ 
+         END_IF 
+      END_CYC
+      UNDEFINE($full_hp_healing)
+      LOGWRITE("Cycle last_enemy_healing end")
+   
+   ELSE
+   LOGWRITE("last_enemy.bmp not fond")
+END_IF
+
+// Amulets
+amulets:
+
+// Universal amelet checking (temp title)
+	 WAIT(1)
+   GETSCREEN
+   // Amulets - Demon, Deffense of Gods, Strange of Mage
+   IF_PIXEL_IN(0,0, $_xmax,339, 2763429)	    
+      LOGWRITE ("Amulet detect! DEMON / DEFFENSCE OF GODS / STRANGE OF MAGE")         
+      LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+      WAITMS(RND(1000,1800))
+   ELSE
+   // Amulets - Blood flower, Rage of Gods, Burn of Ether
+      IF_PIXEL_IN(0,0, $_xmax,339, 55295)	    
+         LOGWRITE ("Amulet detect! BLOOD FLOWER / RAGE OF GODS / BURN OF ETHER")
+				 WAITMS(RND(800,1200))         
+         LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+         WAITMS(RND(1000,1800))
+			ELSE
+   // Amulets - Talisman, Spheres of Arkana
+         IF_PIXEL_IN(0,0, $_xmax,339, 12903679)	    
+            LOGWRITE ("Amulet detect! TALISMAN / SPHERES OF ARKANA")
+   				  WAITMS(RND(800,1200))         
+            LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+            WAITMS(RND(1000,1800))
+         ELSE 			
+ 	 // Amulets - Curse of Glaive, Spurt of Life, Shadow of Death
+            IF_PIXEL_IN(0,0, $_xmax,339, 14822282)	    
+               LOGWRITE ("Amulet detect! CURSE OF GLAIVE / SPURT OF LIFE / SHADOW OF DEATH")        
+               LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+               WAITMS(RND(1000,1800))
+            ELSE            
+               IF_PIXEL_IN(0,0, $_xmax,339, 16711680)
+		    				  WAITMS(RND(800,1200))	    
+                  LOGWRITE ("Amulet detect! GROM ")        
+                  LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
+                  WAITMS(RND(1000,1800))
+							 ELSE							                   
+           	 	   LOGWRITE("Amulets not found")
+     	 	       END_IF   
+            END_IF   
+         END_IF   
+			END_IF		    
+   END_IF         
+
+// Attack
+   GETSCREEN
+   IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)     
+      LOGWRITE ("Attack!")
+      LCLICK($_return1+RND(10,80), $_return2+RND(1,3))  
+      WAITMS(RND(1000,1500))
+   ELSE
+	    LOGWRITE("atack_kick.bmp not found")   
+   END_IF 
+   
+// End body of combat cycle
+
+   ELSE
+   LOGWRITE("Combat end (not found attack.bmp)")
+   INC($combat_detect,1)
+	    
+   END_IF
+   
+   // Checking keeper, inc of source counter and exiting from inner combat cycle
+	      ext:
+	 // End 
+	 
+	 END_CYC
+	 
+	 // Exiting from combat cycle
+	 INC($combat_detect)	                   	   
+
+END_CYC
+
+UNDEFINE($combat_detect)
+UNDEFINE($transition_counter)
+
+LOGWRITE("COMBAT ITERATION - END")
