@@ -3,7 +3,7 @@
 // На Home-PC для Chrome достатньо просто прив'язатись до зовнішнього вікна Хрому і запустити permanent_healing
 // На Home-PC для K-Meleon пока невідомо, як зробити прив'язку. UPD: відключити апаратне прискорення
 
-// Binding to window K-Meleon (left)
+// Binding to window K-Meleon (right)
    LOGWRITE("Right binding")
    $hWND_window_meleon = WNDFIND("K-Meleon")
    LOGWRITE("$hWND_window_meleon is :", $hWND_window_meleon)
