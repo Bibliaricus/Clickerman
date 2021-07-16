@@ -281,76 +281,7 @@ amulets:
          END_IF   
 			END_IF		    
    END_IF 
-	 	 LOGWRITE("2. MARKER!!!")   
-
-
-
-
-
-
-
-
-
-
-
-
-
-//// Universal amelet checking (temp title)
-//	 WAIT(1)
-//	 LOGWRITE("1. MARKER!!!")
-//   GETSCREEN
-// 	 LOGWRITE("2. MARKER!!!")
-//   // Amulets - Demon, Deffense of Gods, Strange of Mage
-//   IF_PIXEL_IN(0,0, $_xmax,339, 255)	    
-//      LOGWRITE ("Amulet detect! DEMON / DEFFENSCE OF GODS / STRANGE OF MAGE")         
-//      LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
-//      WAITMS(RND(1000,1800))
-//   ELSE
-//   // Amulets - Blood flower, Rage of Gods, Burn of Ether
-//   	 LOGWRITE("3. MARKER!!!")
-//      IF_PIXEL_IN(0,0, $_xmax,339, 55295)	    
-//         LOGWRITE ("Amulet detect! BLOOD FLOWER / RAGE OF GODS / BURN OF ETHER")
-//				 WAITMS(RND(800,1200))         
-//         LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
-//         WAITMS(RND(1000,1800))
-//			END_IF
-//				 LOGWRITE("4. MARKER!!!")
-//   ELSE
-//   // Amulets - Talisman, Spheres of Arkana
-//   	 LOGWRITE("5. MARKER!!!")
-//      IF_PIXEL_IN(0,0, $_xmax,339, 12903679)	    
-//         LOGWRITE ("Amulet detect! TALISMAN / SPHERES OF ARKANA")
-//				 WAITMS(RND(800,1200))         
-//         LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
-//         WAITMS(RND(1000,1800))
-//			END_IF
-//				 LOGWRITE("6. MARKER!!!")
-//   ELSE
-//   	 LOGWRITE("7. MARKER!!!")
-// 	 // Amulets - Curse of Glaive, Spurt of Life, Shadow of Death
-//      IF_PIXEL_IN(0,0, $_xmax,339, 14822282)	    
-//         LOGWRITE ("Amulet detect! CURSE OF GLAIVE / SPURT OF LIFE / SHADOW OF DEATH")        
-//         LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
-//         WAITMS(RND(1000,1800))
-//			END_IF
-//	 ELSE
-//	    LOGWRITE("Amulets not found") 
-//   END_IF 
-//	 	 LOGWRITE("8. MARKER!!!")     
-
-
-
-//// Amulet - Demon
-//	 WAIT(1)
-//   GETSCREEN
-////   IF_PICTURE_IN (0,0, $_xmax,339, "demon_red.bmp", -1, 100)
-//IF_PIXEL_IN(0,0, $_xmax,339, 255)	    
-//   LOGWRITE ("Стал демоном! RED! PXL!")         
-//      LCLICk($_return1+RND(10,30), $_return2+RND(1,3)) 
-//      WAITMS(RND(1000,1800))
-//   ELSE
-//   LOGWRITE("demon_red.bmp not found")   
-//   END_IF      
+	 	 LOGWRITE("2. MARKER!!!")       
 
 // Attack
 

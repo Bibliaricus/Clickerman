@@ -139,21 +139,10 @@ LOGWRITE("Permanent healing cycle start")
          WAIT(4)
       ELSE
          LOGWRITE("Refresh!")				            
-            GETSCREEN
-//            IF_PICTURE_IN (0,0, 180,81, "refresh_k-meleon.bmp", -1, 100)
-//               LOGWRITE("refresh in K-Meleon")           
-//               LCLICK($_return1, $_return2)
-//               WAITMS(100)
-//               MOVE($_return1+20, $_return2+20)
-//               WAIT(4)
+            GETSCREEN            
 						WAITMS(50)
             KEYPRESS(#F5)                      
-            WAIT(4)
-//            ELSE
-//               LOGWRITE("refresh in Chrome (px)")
-//						   LCLICK(85,52)
-//							 WAIT(3)   
-//            END_IF            	 			       
+            WAIT(4)                        	 			       
       END_IF  
       
    END_IF

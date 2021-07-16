@@ -1,5 +1,5 @@
-﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\combat_universal.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\_test_hell_games--K-Meleon--100_auto--hWND_by_command(right).cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\_test_hell_games--K-Meleon--100_auto--hWND_by_command(left).cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\hell_games.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\binding_window--Home-PC--Chrome(right).cms
+﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+v.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+l.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\unbinding.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\test.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\permanent_healing.cms
