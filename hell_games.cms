@@ -39,8 +39,7 @@
 
 LOGWRITE("HELL GAME ITERATION - START")
 DEFINE($iteration_counter, 1)
-// $iteration_counter - 3 (*_counter <=3), test - 3
-// $transition_counter - 30, test - 5
+// $iteration_counter <= 4 , test <= 2
 WHILE($iteration_counter <= 4)
    LOGWRITE("Hell games cycle start")           
    
@@ -74,9 +73,11 @@ WHILE($iteration_counter <= 4)
    
    // Waiting after succesfull hell games
    LOGWRITE("Start waiting in main page")
-   // WAIT(10)
-   WAIT(RND(600,900))   
-   // WAIT(RND(2400,3300))
+   // Waiting after succesfull hell games (long work - 40-55 minutes, short work (online) - 10-15 minutes, test - 10 seconds
+	 // $iteration_counter <= 4 , test <= 2 
+   // WAIT(10) // 10 seconds
+   WAIT(RND(600,900)) // 10-15 minutes
+   // WAIT(RND(2400,3300)) // 40-55 minutes
    
    LOGWRITE("End waiting in main page")
    
@@ -103,7 +104,7 @@ LOGWRITE("HELL GAME ITERATION - END")
 
 // Waiting between hell-game iteration (test - 10-15 second, production - 1-2 or 6-8 hours) (by RND)
 LOGWRITE("Waiting between hell-game iteration - start")
-// WAIT(RND(10,15))
-WAIT(RND(21600,28800))
+// WAIT(RND(10,15)) // 10-15 seconds
+WAIT(RND(21600,28800)) // 6-8 hours 
 
 LOGWRITE("Waiting between hell-game iteration - end")

@@ -1,5 +1,5 @@
-﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+v.cms
+﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\combat_universal--hell_games.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\hell_games.cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+v.cms
 C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+l.cms
 C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\unbinding.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\test.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\permanent_healing.cms
