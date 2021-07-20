@@ -36,29 +36,39 @@
 
 // Протестити повністю весь сценарій
 // Розставити нормальні вейти на всіх етапах
+// Додати якусь дію у випадку, якщо клікер не зможе зайти в Ігри (наприклад, якщо не розпізнає картинку)
 
 LOGWRITE("HELL GAME ITERATION - START")
 DEFINE($iteration_counter, 1)
 // $iteration_counter <= 4 , test <= 2
-WHILE($iteration_counter <= 4)
+WHILE($iteration_counter <= 2)
    LOGWRITE("Hell games cycle start")           
    
    // Start battle
    
    GETSCREEN
-   IF_PICTURE_IN (0,0, 866,570, "hell-game_img.bmp", -1, 100)
-      LOGWRITE ("HELL GAME!!!")
-      GETSCREEN
-      IF_PIXEL_IN(0,0, 864,762, 55295)         
+//   IF_PICTURE_IN (0,0, 866,570, "hell-game_img.bmp", -1, 100)
+//      LOGWRITE ("HELL GAME!!!")
+//      GETSCREEN
+//      IF_PIXEL_IN(0,0, 864,762, 55295)         
+//         LOGWRITE ("START!!!")
+//         LCLICK($_return1+RND(20,50), $_return2+RND(1,3))
+//         WAITMS(RND(500,1500))
+//      ELSE
+//         LOGWRITE("start_battle--hell-game.bmp not found")
+//      END_IF
+//   ELSE
+//      LOGWRITE("hell-game_img.bmp not found")
+//   END_IF
+   
+   // Entering to Hell Games only by gold color (CSS)
+   IF_PIXEL_IN(0,0, 864,762, 55295)         
          LOGWRITE ("START!!!")
          LCLICK($_return1+RND(20,50), $_return2+RND(1,3))
          WAITMS(RND(500,1500))
       ELSE
          LOGWRITE("start_battle--hell-game.bmp not found")
       END_IF
-   ELSE
-      LOGWRITE("hell-game_img.bmp not found")
-   END_IF
    
    // Combat cycle
    #include "combat_universal--hell_games.cms"
@@ -75,8 +85,8 @@ WHILE($iteration_counter <= 4)
    LOGWRITE("Start waiting in main page")
    // Waiting after succesfull hell games (long work - 40-55 minutes, short work (online) - 10-15 minutes, test - 10 seconds
 	 // $iteration_counter <= 4 , test <= 2 
-   // WAIT(10) // 10 seconds
-   WAIT(RND(600,900)) // 10-15 minutes
+   WAIT(10) // 10 seconds
+   // WAIT(RND(600,900)) // 10-15 minutes
    // WAIT(RND(2400,3300)) // 40-55 minutes
    
    LOGWRITE("End waiting in main page")
@@ -104,7 +114,7 @@ LOGWRITE("HELL GAME ITERATION - END")
 
 // Waiting between hell-game iteration (test - 10-15 second, production - 1-2 or 6-8 hours) (by RND)
 LOGWRITE("Waiting between hell-game iteration - start")
-// WAIT(RND(10,15)) // 10-15 seconds
-WAIT(RND(21600,28800)) // 6-8 hours 
+ WAIT(RND(10,15)) // 10-15 seconds
+// WAIT(RND(21600,28800)) // 6-8 hours 
 
 LOGWRITE("Waiting between hell-game iteration - end")
