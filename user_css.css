@@ -66,6 +66,18 @@ img[src$="keeper.png"] + span.info {
   background-color: cadetblue;
 } 
 
+/* Atack in color */
+a[href*="damageLastTarget"] {
+  color: chartreuse;
+  background-color: chartreuse;
+}
+
+/* Checking sourche */
+img[src*="portal_red"] + span > a {
+  color: #e613e0;
+  background-color: #e613e0;
+}
+
 /* Checking HP in new combat */
 /* img[src*="heart_33"] + span.info {
   background-color: darksalmon;
