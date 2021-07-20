@@ -1,5 +1,5 @@
-﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\combat_universal--hell_games.cms
+﻿C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\_working_combat_universal--Chrome--100_auto--hWND_by_command(right).cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\_working_combat_universal--K-Meleon--100_auto--hWND_by_command(left).cms
+C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\combat_universal--hell_games.cms
 C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\hell_games.cms
 C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+v.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\zz_ctrl+l.cms
-C:\Users\admin\Downloads\Clickerman-Git\Clickermann v4.13 x32\unbinding.cms
