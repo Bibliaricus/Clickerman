@@ -1,2 +1,5 @@
 # Ignored files in Clickermann directory
 errorlog.txt
+data/config_editor.ini
+data/history_editor.txt
+backup.cms
