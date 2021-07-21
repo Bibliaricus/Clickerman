@@ -166,8 +166,8 @@ WHILE($combat_detect = 1)
    LOGWRITE("Combat cycle start")
    GETSCREEN
    
-   // IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)
-      IF_PIXEL_IN(0,0, 909,351,  65407)
+    IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)
+      // IF_PIXEL_IN(0,0, 909,351,  65407)
       LOGWRITE("Combat begin")
 			
 // Body of combat cycle
@@ -370,8 +370,8 @@ amulets:
 													   
 // Attack       
    GETSCREEN
-   // IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)  
-	    IF_PIXEL_IN(0,0, 909,351, 65407)   
+    IF_PICTURE_IN (0,0, 909,351, "atack_kick.bmp", -1, 100)  
+	    // IF_PIXEL_IN(0,0, 909,351, 65407)   
       LOGWRITE ("Attack!")
       LCLICK($_return1+RND(10,80), $_return2+RND(1,3))  
       WAITMS(RND(1000,1500))
