@@ -28,7 +28,8 @@
 // Виявлені баги:
 // В кінці сценарію при переході на головну і поверненні назад в Ігри інколи не спрацьовує копіювання тексту в адресну стрічку. І чомусь не заходить в Пекельні ігри.
 // [FIXED] Не завжди коректно працює розпізнавання картинок. Покищо невідомо чому. FIX: з'ясувалось, що проблема була в області пошуку.
-// На Work-notb в K-Meleon не переходить на інше джерело, хоча я вже й помітив його через CSS. Нада з цим розібратись. 
+// На Work-notb в K-Meleon не переходить на інше джерело, хоча я вже й помітив його через CSS. Нада з цим розібратись.
+// При подвійній прив'язці не виходить з ігор. Можливо, не працюють шорткати. Це треба перевірити на 50:50 прив'язці.  
 
 //=============================================
   // Мінералів до початку фарму: 
@@ -79,7 +80,6 @@ WHILE($iteration_counter <= 2)
    // Combat cycle
    #include "combat_universal--hell_games.cms"
    
-   // Return to main page and Waiting after succesful hell game (after some transition) (test - 30 seconds, production - 1.5-2 hours
    // Return to main page
    LOGWRITE("Returning to main page after succesfull games!")
    TOCLIP("https://m.vten.ru/")
@@ -89,8 +89,7 @@ WHILE($iteration_counter <= 2)
    
    // Waiting after succesfull hell games
    LOGWRITE("Start waiting in main page")
-   // Waiting after succesfull hell games (long work - 40-55 minutes, short work (online) - 10-15 minutes, test - 10 seconds
-	 // $iteration_counter <= 4 , test <= 2 
+   // Waiting after succesfull hell games (long work - 40-55 minutes, short work (online) - 10-15 minutes, test - 10 seconds 
    WAIT(10) // 10 seconds
    // WAIT(RND(600,900)) // 10-15 minutes
    // WAIT(RND(2400,3300)) // 40-55 minutes

@@ -11,7 +11,7 @@ WHILE($combat_detect = 1)
   // Checking of keeper cycle
   DEFINE($transition_counter, 1)
   // $transition_counter - 55, test - 3
-  WHILE($transition_counter <= 130)   // Можливо якийсь інший вираз впихнути  
+  WHILE($transition_counter <= 100)   // Можливо якийсь інший вираз впихнути  
   
   // Death checking
    GETSCREEN
@@ -34,7 +34,7 @@ WHILE($combat_detect = 1)
          // Waiting or stoped
          // HALT
          
-         // Waiting after death (30 seconds in test, 50-70 minutes in production)
+         // Waiting after death (30 seconds in test, 55-75 minutes in production)
          LOGWRITE("Waiting in main page after 3 death in hell games and undefine $death_count")
          UNDEFINE($death_count)                                                    
          WAIT(30) // 30 seconds
@@ -140,7 +140,7 @@ WHILE($combat_detect = 1)
          // Check transition counter  (якщо буде багуватись чи некоректно працювати, то помістити в інше місце)
          LOGWRITE("Достаточно ли фармить?")
          // $transition_counter - 55, test - 3
-         IF($transition_counter <= 130)
+         IF($transition_counter <= 100)
            LOGWRITE("Недостаточно!")
            GOTO(cont)         
          ELSE
