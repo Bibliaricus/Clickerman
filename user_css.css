@@ -68,7 +68,7 @@ img[src$="keeper.png"] + span.info {
 
 /* Atack in color */
 a[href*="damageLastTarget"] {
-  color: chartreuse;
+  color: black;
   background-color: chartreuse;
 }
 
