@@ -11,7 +11,7 @@ WHILE($combat_detect = 1)
   // Checking of keeper cycle
   DEFINE($transition_counter, 1)
   // $transition_counter - 55, test - 3
-  WHILE($transition_counter <= 3)   // Можливо якийсь інший вираз впихнути  
+  WHILE($transition_counter <= 130)   // Можливо якийсь інший вираз впихнути  
   
   // Death checking
    GETSCREEN
@@ -140,7 +140,7 @@ WHILE($combat_detect = 1)
          // Check transition counter  (якщо буде багуватись чи некоректно працювати, то помістити в інше місце)
          LOGWRITE("Достаточно ли фармить?")
          // $transition_counter - 55, test - 3
-         IF($transition_counter <= 3)
+         IF($transition_counter <= 130)
            LOGWRITE("Недостаточно!")
            GOTO(cont)         
          ELSE
